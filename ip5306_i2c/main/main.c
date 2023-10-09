@@ -2,6 +2,8 @@
 #include "ip5306.h"
 
 
+#define IP5306_REG_ADDR 0x75
+
 const char* TAG = "I2c example of BMS (IP5306)";
 
 static i2c_bus_device_handle_t ip5306;
@@ -35,9 +37,7 @@ void app_main(void)
     i2c_bus_handle_t i2c_bus = i2c_bus_create(i2c_master_port, &conf);
     assert(i2c_bus != NULL);
 
-    //add the devixe to the i2c bus 0x75 is the address of ip5306
-    ip5306 =i2c_bus_device_create(i2c_bus, 0x75, 0);
-    assert(ip5306 != NULL);
+    ip5306_create(i2c_bus,IP5306_REG_ADDR);
 
     //configuring the IP5306 driver
     reg_SYS_CTL0_t.reg_byte = ip5306_read(SYS_CTL0);
@@ -80,5 +80,14 @@ void app_main(void)
 
     boost_mode(ENABLE);
     vTaskDelay(pdMS_TO_TICKS(100));
+
+
+    while (1)
+    {
+        ESP_LOGI(TAG, "Battery voltage : %d",get_battery_level());
+        vTaskDelay(1);
+
+    }
+    
 
 }

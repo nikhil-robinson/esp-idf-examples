@@ -16,6 +16,7 @@ ip5306_handle_t ip5306_create(i2c_bus_handle_t bus, uint8_t dev_addr)
     }
     sens->dev_addr = dev_addr;
     sens->timeout = 1000;
+    ip5306 = sens->i2c_dev;
     return (ip5306_handle_t) sens;
 }
 

@@ -98,7 +98,7 @@
 static const char *IP5306 = "IP5306"; 
 
 /*SYS_CTL0*/
-union{
+static union{
     struct{
      uint8_t BUTTON_SHUTDOWN             : 1; //0
      uint8_t SET_BOOST_OUTPUT_ENABLE     : 1; 
@@ -116,7 +116,7 @@ union{
 
 
 /*SYS_CTL1*/
-union{
+static union{
     struct{
        uint8_t LOW_BATTERY_SHUTDOWN_ENABLE          : 1;
        uint8_t RSVD                                 : 1;
@@ -132,7 +132,7 @@ union{
 }reg_SYS_CTL1_t;
 
 /*SYS_CTL2*/
-union{
+static union{
     struct{
        uint8_t RSVD                              : 2;
        uint8_t LIGHT_LOAD_SHUTDOWN_TIME          : 2;
@@ -144,7 +144,7 @@ union{
 }reg_SYS_CTL2_t;
 
 /*Charger_CTL0*/
-union{
+static union{
      struct{
        uint8_t CHARGING_FULL_STOP_VOLTAGE      : 2;
        uint8_t RSVD                            : 6;
@@ -155,7 +155,7 @@ union{
 
 
 /*Charger_CTL1*/
-union{
+static union{
     struct{
        uint8_t RSVD                             : 2;
        uint8_t CHARGE_UNDER_VOLTAGE_LOOP        : 3;
@@ -168,7 +168,7 @@ union{
 
 
 /*Charger_CTL2*/
-union{
+static union{
      struct{
        uint8_t  VOLTAGE_PRESSURE              : 2;
        uint8_t  BATTERY_VOLTAGE               : 2;
@@ -179,7 +179,7 @@ union{
 }reg_Charger_CTL2_t;
 
 /*Charger_CTL3*/     
-union{
+static union{
      struct{
        uint8_t  RSVD                          : 5;
        uint8_t  CHARGE_CC_LOOP                : 1;
@@ -191,7 +191,7 @@ union{
 
 
 /*CHG_DIG_CTL0*/
-union{
+static union{
      struct{
        uint8_t  VIN_CURRENT                   : 5;
        uint8_t  RSVD                          : 3;
@@ -202,7 +202,7 @@ union{
 
 
 /*REG_READ0*/
-union{ 
+static union{ 
       struct{
        uint8_t   RSVD                         : 3;
        uint8_t   CHARGE_ENABLE                : 1;
@@ -214,7 +214,7 @@ union{
 
 /*REG_READ1*/
 
-union{ 
+static union{ 
       struct{
        uint8_t   RSVD                          : 3;
        uint8_t   BATTERY_STATUS                : 1;
@@ -226,7 +226,7 @@ union{
 
 
 /*REG_READ2*/
-union{ 
+static union{ 
       struct{
        uint8_t   RSVD                         : 2;
        uint8_t   LOAD_LEVEL                   : 1;
