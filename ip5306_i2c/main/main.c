@@ -8,11 +8,10 @@ const char* TAG = "I2c example of BMS (IP5306)";
 
 static i2c_bus_device_handle_t ip5306;
 
-void app_main(void)
+
+i2c_bus_handle_t i2c_bus_init()
 {
-
-
-    // initialise i2c bus for ip5306.
+        // initialise i2c bus for ip5306.
 
     // set the port number
     i2c_port_t i2c_master_port = I2C_NUM_0;
@@ -36,6 +35,15 @@ void app_main(void)
     //create the i2c bus.
     i2c_bus_handle_t i2c_bus = i2c_bus_create(i2c_master_port, &conf);
     assert(i2c_bus != NULL);
+    return i2c_bus;
+}
+
+
+void app_main(void)
+{
+
+
+    i2c_bus_handle_t i2c_bus = i2c_bus_init();
 
     ip5306_create(i2c_bus,IP5306_REG_ADDR);
 
